@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
+   <children>
+      <Pane fx:id="modalWindow" layoutX="142.0" layoutY="-5.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: rgba(0,0,0,0.4);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane fx:id="productDetails" layoutX="297.0" layoutY="43.0" prefHeight="514.0" prefWidth="348.0" style="-fx-background-color: white; -fx-border-color: black;">
+               <children>
+                  <Button fx:id="closeButton" layoutX="315.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeModal" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: white;" text="X" textFill="#aaaaaa">
+                     <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="18.0" layoutY="22.0" text="Product Details">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="57.0" text="Product ID">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="productIdField" disable="true" editable="false" layoutX="20.0" layoutY="85.0" prefHeight="31.0" prefWidth="309.0" style="-fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="19.0" layoutY="143.0" text="Product Name">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="productNameField" layoutX="19.0" layoutY="171.0" prefHeight="31.0" prefWidth="309.0" style="-fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="20.0" layoutY="231.0" text="Price">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="priceField" layoutX="20.0" layoutY="259.0" prefHeight="23.0" prefWidth="309.0" style="-fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="19.0" layoutY="315.0" text="Number of Stocks">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="stockField" layoutX="19.0" layoutY="343.0" prefHeight="23.0" prefWidth="309.0" style="-fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="updateButton" layoutX="129.0" layoutY="469.0" mnemonicParsing="false" onAction="#updateProductDetails" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #00c949; -fx-background-radius: 15; -fx-border-radius: 15;" text="Update" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="20.0" layoutY="395.0" text="Image">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="TOP_LEFT" layoutX="19.0" layoutY="423.0" mnemonicParsing="false" onAction="#openFile" prefHeight="25.0" prefWidth="79.0" text="Choose File" />
+                  <Label fx:id="fileName" layoutX="107.0" layoutY="427.0" prefHeight="17.0" prefWidth="218.0" text="File name" visible="false" />
+                  <Label fx:id="filePath" layoutX="107.0" layoutY="405.0" prefHeight="17.0" prefWidth="218.0" text="File path" visible="false" />
+                  <ImageView fx:id="imageUploaded" fitHeight="37.0" fitWidth="39.0" layoutX="289.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                  <Label fx:id="productNameError" layoutX="19.0" layoutY="202.0" prefHeight="25.0" prefWidth="309.0" text="Product Name Error" textFill="RED" visible="false" wrapText="true" />
+                  <Label fx:id="priceError" layoutX="20.0" layoutY="290.0" prefHeight="25.0" prefWidth="309.0" text="Price Error" textFill="RED" visible="false" wrapText="true" />
+                  <Label fx:id="stockError" layoutX="20.0" layoutY="374.0" prefHeight="25.0" prefWidth="309.0" text="Stock Error" textFill="RED" visible="false" wrapText="true" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="settings" layoutX="143.0" prefHeight="600.0" prefWidth="658.0" style="-fx-background-color: #93D2F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane layoutX="26.0" layoutY="122.0" prefHeight="350.0" prefWidth="605.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <children>
+                  <Label layoutX="33.0" layoutY="114.0" prefHeight="42.0" prefWidth="96.0" text="Username :">
+                     <font>
+                        <Font name="Georgia" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="adminUsername" editable="false" layoutX="129.0" layoutY="114.0" prefHeight="42.0" prefWidth="234.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <Label layoutX="33.0" layoutY="190.0" prefHeight="42.0" prefWidth="96.0" text="Password :">
+                     <font>
+                        <Font name="Georgia" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="adminPassword" editable="false" layoutX="129.0" layoutY="190.0" prefHeight="42.0" prefWidth="234.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <Button fx:id="editProfileButton" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" onAction="#editProfile" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #318FCF; -fx-background-radius: 18; -fx-border-radius: 18;" text="Edit" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="saveProfileButton" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" onAction="#saveProfile" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #318FCF; -fx-background-radius: 18; -fx-border-radius: 18;" text="Save" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Label layoutX="33.0" layoutY="36.0" prefHeight="42.0" prefWidth="96.0" text="Admin ID:">
+                     <font>
+                        <Font name="Georgia" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="adminID" disable="true" editable="false" layoutX="129.0" layoutY="36.0" prefHeight="42.0" prefWidth="234.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="usernameError" layoutX="129.0" layoutY="156.0" prefHeight="37.0" prefWidth="336.0" text="Username Error" textFill="RED" visible="false" wrapText="true">
+                     <padding>
+                        <Insets left="4.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="passwordError" layoutX="129.0" layoutY="232.0" prefHeight="37.0" prefWidth="336.0" text="Password Error" textFill="RED" visible="false" wrapText="true">
+                     <padding>
+                        <Insets left="4.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </Pane>
+            <Label prefHeight="63.0" prefWidth="649.0" text="Account Settings">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <font>
+                  <Font name="SansSerif Bold" size="22.0" />
+               </font>
+            </Label>
+            <Line endX="542.0" layoutX="115.0" layoutY="63.0" startX="-114.99998474121094" strokeWidth="2.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="products" layoutX="143.0" prefHeight="600.0" prefWidth="657.0" style="-fx-background-color: #93D2F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Line endX="555.9999389648438" layoutX="101.0" layoutY="63.0" startX="-100.0" strokeWidth="2.0" />
+            <Label layoutX="19.0" layoutY="102.0" prefHeight="84.0" prefWidth="620.0" style="-fx-background-color: linear-gradient(to top,#1A5E79, #52899F); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Product List" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="40.0" left="13.0" />
+               </padding>
+            </Label>
+            <ScrollPane hbarPolicy="NEVER" layoutX="19.0" layoutY="145.0" prefHeight="392.0" prefWidth="620.0" style="-fx-background-color: white; -fx-border-color: black;" vbarPolicy="ALWAYS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="603.0" style="-fx-background-color: #F0F5F9;">
+                     <children>
+                        <HBox layoutX="1.0" layoutY="40.0" prefHeight="58.0" prefWidth="212.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="40.0">
+                           <children>
+                              <Label fx:id="productId1" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage1" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName1" prefHeight="58.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price1" alignment="CENTER" prefHeight="58.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock1" alignment="CENTER" prefHeight="58.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton1" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton1" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton1" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="98.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="98.0">
+                           <children>
+                              <Label fx:id="productId2" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage2" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName2" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price2" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock2" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton2" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton2" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton2" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="156.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="156.0">
+                           <children>
+                              <Label fx:id="productId3" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage3" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName3" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price3" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock3" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton3" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton3" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton3" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="214.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="214.0">
+                           <children>
+                              <Label fx:id="productId4" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage4" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName4" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price4" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock4" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton4" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton4" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton4" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="272.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="272.0">
+                           <children>
+                              <Label fx:id="productId5" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage5" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName5" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price5" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock5" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton5" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton5" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton5" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="330.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="330.0">
+                           <children>
+                              <Label fx:id="productId6" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage6" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName6" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price6" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock6" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton6" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton6" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton6" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="388.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="388.0">
+                           <children>
+                              <Label fx:id="productId7" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage7" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName7" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price7" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock7" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton7" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton7" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton7" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="446.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="446.0">
+                           <children>
+                              <Label fx:id="productId8" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage8" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName8" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price8" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock8" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton8" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton8" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton8" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="504.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="504.0">
+                           <children>
+                              <Label fx:id="productId9" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage9" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName9" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price9" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock9" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton9" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton9" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton9" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="1.0" layoutY="562.0" prefHeight="59.0" prefWidth="540.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="562.0">
+                           <children>
+                              <Label fx:id="productId10" alignment="CENTER" prefHeight="58.0" prefWidth="33.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <ImageView fx:id="productImage10" fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="productName10" prefHeight="64.0" prefWidth="150.0" text="ProductName" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="price10" alignment="CENTER" prefHeight="67.0" prefWidth="65.0" text="Price" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Label fx:id="stock10" alignment="CENTER" prefHeight="66.0" prefWidth="68.0" text="Stock" textAlignment="CENTER" wrapText="true" />
+                              <Line endX="-100.0" endY="56.0928840637207" startX="-100.0" />
+                              <Button fx:id="addButton10" mnemonicParsing="false" onAction="#addStock" prefHeight="26.0" prefWidth="61.0" text="Add">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="removeButton10" mnemonicParsing="false" onAction="#removeStock" prefHeight="26.0" prefWidth="61.0" text="Remove">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="editButton10" mnemonicParsing="false" onAction="#openModal" prefHeight="26.0" prefWidth="61.0" text="Edit">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Label prefHeight="63.0" prefWidth="649.0" text="Products">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <font>
+                  <Font name="SansSerif Bold" size="22.0" />
+               </font>
+            </Label>
+            <HBox layoutX="19.0" layoutY="144.5" prefHeight="44.0" prefWidth="605.2" style="-fx-background-color: #F0F5F9; -fx-border-color: black;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="35.0" text="ID" textAlignment="CENTER" wrapText="true" />
+                  <Line endX="-100.0" endY="40.89287567138672" startX="-100.0" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="66.0" text="Image" textAlignment="CENTER" wrapText="true" />
+                  <Line endX="-100.0" endY="40.89287567138672" startX="-100.0" />
+                  <Label prefHeight="42.0" prefWidth="150.0" text="Product Name" wrapText="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Line endX="-100.0" endY="40.89287567138672" startX="-100.0" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="65.0" text="Price (RM)" textAlignment="CENTER" wrapText="true" />
+                  <Line endX="-100.0" endY="40.89287567138672" startX="-100.0" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="68.0" text="Number of Stock" textAlignment="CENTER" wrapText="true" />
+                  <Line endX="-100.0" endY="40.89287567138672" startX="-100.0" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="212.0" text="Action" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane prefHeight="600.0" prefWidth="143.0" style="-fx-background-color: #1E2022; -fx-border-color: black;">
+         <children>
+            <VBox layoutY="88.0" prefHeight="127.0" prefWidth="154.0">
+               <children>
+                  <Button fx:id="productButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#navigationBar" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #1E2022;" text="Products" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="productButtonIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/product_white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="settingButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#navigationBar" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #1E2022;" text="Settings" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="settingButtonIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/setting_white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+            <ImageView fx:id="logo" fitHeight="42.0" fitWidth="38.0" layoutX="3.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/vend.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutY="516.0" prefHeight="42.0" prefWidth="105.0" style="-fx-background-color: #52616B;" text="Admin" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="103.0" layoutY="516.0" mnemonicParsing="false" onAction="#logOut" prefHeight="42.0" prefWidth="34.0" style="-fx-background-color: #191136;">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fx:id="logoutButtonIcon" fitHeight="20.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/logout_white.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="15.0" prefHeight="52.0" prefWidth="96.0" text="GoVend" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Arial Black" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="exitButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="558.0" mnemonicParsing="false" onAction="#exit" prefHeight="42.0" prefWidth="143.0" style="-fx-background-color: #FF4545;" text="Exit" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="exitButtonIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/power-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="28.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

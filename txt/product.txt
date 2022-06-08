@@ -1,0 +1,10 @@
+P01;Coke;2.00;10;Coke.jpg
+P02;Nestle Nescafe Tarik;2.50;0;Nestle Nescafe Tarik.jpg
+P03;100 Plus;2.50;12;100 Plus.jpg
+P04;Drinho Chrysanthemum Tea;2.00;20;Drinho Chrysanthemum Tea.jpg
+P05;Drinho Ice Lemon Tea;2.50;5;Drinho Ice Lemon Tea.jpg
+P06;Drinho Lychee Drink;2.00;5;Drinho Lychee Drink.jpg
+P07;Drinho Soya Bean Milk;2.40;7;Drinho Soya Bean Milk.jpg
+P08;Pepsi;2.00;9;Pepsi.jpg
+P09;Sprite;2.00;12;Sprite.jpg
+P10;Fanta Grape;2.20;14;Fanta Grape.jpg
